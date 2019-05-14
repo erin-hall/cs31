@@ -1,0 +1,131 @@
+Erin Hall
+Project 4 Report
+(a) Notable Obstacles:
+Although I found creating the first few functions relatively straightforward, I quickly started experiencing problems with my code, especially because I started to use the
+debugger for the first time when working with this project. At first, I also made a few mistakes when writing my test cases, which also set me back as it took time to realize
+that my test cases, not the code I wrote was at fault. However, this allowed me to take a better look and gain a greater understanding of the code, which ended up being
+extremely helpful.
+
+I hit my first major roadblocks when designing the moveToBack and moveToFront functions because when debugging, I ran into out of bounds errors that I incorrectly atrributed
+to a shortcoming in my code; however, when looking back at the spec, I realized that the debugger had applied a value for n beyond the size of the array, which was thus beyond 
+what the function was supposed to/capable of handling, given that there is no other way to tell the size of the array. After this discovery, it became a lot easier to fix these
+functions and get them working correctly.
+
+I found creating the deleteDups() function extremely difficult to code as well. The hardest part of creating this function was figuring out the right configuration of for loops
+and if statements that allowed the code to correctly increment as it moved along the string, eliminating duplicates. Eventually, I found that I made some small errors in the way
+these loops were set up - for instance, using the >= operator instead of > - and fixing these mistakes eliminated almost all of my problems. However, some small problems still 
+persisted at the time of submission.
+
+Coding the meld() function was the most challenging. Initially, I struggled to figure out the best way to slowly go through both of the loops and add them to a new array. After
+trying a handful of options, I eventually settled on a series of if statements, for loops, and while loops.
+
+I also found it difficult to make the split function work. In fact, for my first submission, it wasn't working properly. However, after many attempts, I found a structure of 
+nested for loops and if statements that allowed me to get split to work.
+
+Overall, I found this project challenging, especially when it came to finding the right way to iterate through arrays in order to manipulate them and get the necessary data. Although
+I turned in the project before completely perfecting the deleteDups function, I am still hopeful that my program is largely functional.
+
+(b) Test Data:
+Using the strings below, each of the functions should pass the tests provided by the following assert statements:
+string a[4] = {"hi", "hello", "goodbye", "hello"};
+string b[6] = {"moo", "oink", "buzz", "meow", "woof", "neigh"};
+string c[8] = {"apple", "lemon", "carrot", "grape", "peach", "plum", "banana", "orange"};
+string d[9] = { "yes", "no", "no", "no", "maybe", "yes", "yes", "no", "yes"};
+
+int countMatches(const string a[], int n, string target);
+	assert(countMatches(a, 4, "hello") == 2); 
+	assert(countMatches(a, 3, "hello") == 1);
+	assert(countMatches(a, 0, "hello") == 0);
+	assert(countMatches(b, 6, "moo") == 1);
+	assert(countMatches(b, 6, "mOo") == 0);
+	assert(countMatches(c, 8, "wow") == 0);
+	assert(countMatches(c, 2, "") == 0);
+	assert(countMatches(c, -2, "lemon") == -1);
+
+int detectMatch(const string a[], int n, string target);
+	assert(detectMatch(b, 7, "meow") == 3);
+	assert(detectMatch(b, 2, "meow") == -1);
+	assert(detectMatch(b, 0, "meow") == -1);
+	assert(detectMatch(b, 7, "mEoW") == -1);
+	assert(detectMatch(a, 4, "hello") == 1);
+	assert(detectMatch(a, 4, "") == -1);
+	assert(detectMatch(a, -1, "hello") == -1);
+
+bool detectSequence(const string a[], int n, string target, int& begin, int& end);
+	assert(detectSequence(d, 10, "no", g, e));
+	assert(detectSequence(d, 4, "no", g, e));
+	assert(!detectSequence(d, -1, "no", g, e));
+	assert(detectSequence(d, 7, "yes", g, e));
+	assert(!detectSequence(d, 10, "noo", g, e));
+	assert(detectSequence(d, 10, "maybe", g, e));
+	assert(!detectSequence(d, 4, "maybe", g, e));
+
+int detectMin(const string a[], int n);
+ 	assert(detectMin(a, 4) == 2);
+	assert(detectMin(b, 6) == 2);
+	assert(detectMin(b, -1) == -1);
+	assert(detectMin(b, 0) == -1);
+	assert(detectMin(c, 8) == 0);
+ 
+int moveToBack(string a[], int n, int pos); 
+  	assert(moveToBack(b, 6, 2) == 2);
+	assert(moveToBack(b, 2, 2) == -1);
+        assert(moveToBack(b, 2, 1) == 1);
+        assert(moveToBack(b, -1, 1) == -1);
+  	assert(moveToBack(c, 8, 3) == 3);
+ 	assert(moveToBack(c, 3, 8) == -1);
+
+int moveToFront(string a[], int n, int pos);
+	assert(moveToFront(b, 6, 2) == 2);
+	assert(moveToFront(b, 2, 2) == -1);
+        assert(moveToFront(b, 2, 1) == 1);
+        assert(moveToFront(b, -1, 1) == -1);
+  	assert(moveToFront(c, 8, 3) == 3);
+ 	assert(moveToFront(c, 3, 8) == -1);
+
+string a1[6] = {"red", "orange", "yellow", "blue", "blue", "purple"};
+string a2[6] = {"red", "orange", "yellow", "green", "blue", "purple"};
+string a3[6] = {"red", "orange", "yellow", "green", "blue", "purple"};
+string a4[3] = {"yellow", "green", "blue"};
+string a5[6] = {"red", "red", "green", "green", "green", "blue"};
+string a6[3] = {"yellow", "yellow", "yellow"};
+
+int detectDifference(const string a1[], int n1, const string a2[], int n2);
+   	assert(detectDifference(a1, 6, a2, 6) == 3);
+	assert(detectDifference(a1, -1, a2, 6) == -1);
+	assert(detectDifference(a1, 6, a2, -1) == -1);
+	assert(detectDifference(a1, 2, a2, 2) == 2);
+	assert(detectDifference(a1, 2, a2, 6) == 2); 
+	assert(detectDifference(a1, 6, a1, 6) == 6);
+
+int deleteDups(string a[], int n);
+	assert(deleteDups(a5, 6) == 3);
+	assert(deleteDups(a5, 2) == 1);
+	assert(deleteDups(a5, -1) == -1);
+	assert(deleteDups(a2, 6) == 6);
+	assert(deleteDups(a6, 3) == 1);
+	assert(deleteDups(a6, 1) == 1);
+
+bool contains(const string a1[], int n1, const string a2[], int n2);
+	assert(contains(a2,6,a4,3)); //valid combo
+	assert(!contains(a1,6,a4,3)); 
+	assert(!contains(a2,6,a4,-1)); //negative length
+	assert(contains(a2,6,a4,0)); //contains empty array
+	assert(contains(a2,0,a4,0)); //empty array also has an empty array
+	
+string b1[10] = {"a", "c", "d", "e", "h", "i"};
+string b2[10] = {"b", "f", "g"};
+int meld(const string a1[], int n1, const string a2[], int n2, string result[], int max);
+	assert(meld(b1,6,b2,3,result,25) == 9);
+	assert(meld(b1,2,b2,3,result,25) == 5); //valid combos
+	assert(meld(b1,-1,b2,3,result,25) == -1); //negative length
+	assert(meld(b1,3,b2,0,result,25) == 3) //zero length string
+	assert(meld(b1,6,b2,3,result,5) == -1); //max is too small
+
+int split(string a[], int n, string splitter);
+	assert(split(b, 6, "milk") == 2);
+	assert(split(b, 6, "neigh") == 4);
+	assert(split(c, 8, "pear") == 7);
+	assert(splic(c, 3, "pear") == 3);
+	assert(split(c, 0, "pear") == 0);
+	assert(split(c, -1, "pear") == -1);
