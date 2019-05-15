@@ -2,6 +2,7 @@ Programming Assignment 5
 Rush 'n' Interference
 
 Time due: 11:00 PM Wednesday, May 22
+hello fellows
 
 A secretive government agency has uncovered encrypted messages sent between persons in the U.S. and agents of an unfriendly foreign power suspected of attempting to influence U.S. elections. While experts are working on decrypting most of the messages, some of the messages appear to have been sent between people who know almost nothing about cryptography, so the agency has decided to save money by hiring a student intern to work with those messages. That intern is you.
 
@@ -66,7 +67,7 @@ Standard C++ requires that the number of elements in an array you declare to be 
 	    char a[strlen(crib)]; // Error! strlen(crib) not known at compile time
 The decrypt function is the only function you are required to write. You may write additional functions as part of your solution if you wish. While we won't test those additional functions separately, their use may help you structure your program more readably. Of course, to test all your functions, you'll want to write a main routine that calls your decrypt function. During the course of developing your solution, you might change that main routine many times. As long as your main routine compiles correctly when you turn in your solution, it doesn't matter what it does, since we will rename it to something harmless and never call it (because we will supply our own main routine to throroughly test your decrypt function).
 
-Your decrypt function and any functions it calls must not cause anything to be read from cin. They must not cause anything to be written to cout other than the (partially) decrypted messages required by this spec. If you want these functions to write things out for debugging purposes, write to cerr instead of cout. When we test your program, we will cause everything written to cerr to be discarded instead — we will never see that output, so you may leave those debugging output statements in your program if you wish.
+Your decrypt function and any functions it calls must not cause anything to be read from cin. They must not cause anything to be written to cout other than the (partially) decrypted messages required by this spec. If you want these functions to write things out for debugging purposes, write to cerr instead of cout. When we test your program, we will cause everything written to cerr to be discarded instead Â— we will never see that output, so you may leave those debugging output statements in your program if you wish.
 
 The correctness of your program must not depend on undefined program behavior. Your program could not, for example, assume anything about t's value, or even whether or not the program crashes:
 
@@ -74,7 +75,7 @@ The correctness of your program must not depend on undefined program behavior. Y
 	{
 	    char t[6];
 	    strcpy(t, "Enigma");  // too long: 7 chars including '\0'
-	    …
+	    Â…
 Here's an example of a main routine that performs some simple tests of the decrypt function:
 
 	void runtest(const char ciphertext[], const char crib[])
