@@ -42,10 +42,6 @@
     char l[] = "piggy wr \n oklixqym";  // newline splits crib
     assert(!decrypt(l, C2));
     
-    char m[] = "piggy wr \n oklixqym";  // newline splits crib
-    assert(!decrypt(m, C2));
-    
-    
     //Even more complicated, just throwing stuff around here
     char m[] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";  // duplicate letters; can mess up result
     assert(!decrypt(m, C2));
