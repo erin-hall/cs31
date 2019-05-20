@@ -44,3 +44,18 @@
     
     char m[] = "piggy wr \n oklixqym";  // newline splits crib
     assert(!decrypt(m, C2));
+    
+    
+    //Even more complicated, just throwing stuff around here
+    char m[] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";  // duplicate letters; can mess up result
+    assert(!decrypt(m, C2));
+    
+    char n[] = "piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym";  // more than 80 characters in a message; should immediately be false
+    assert(!decrypt(n, C2));
+    
+    char o[] = "piggy wr oklixqym piggy wr oklixqym \n  piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym piggy wr oklixqym";  // more than 80 characters between newlines; should immediately be false
+    assert(!decrypt(o, C2)); // too many newline characters
+    
+    assert(!decrypt(n, C2));
+    char p[] = "piggy wr oklixqym \n \n \n \n \n \n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n \n \n \n \n\n \n \n \n \n \n \n \n\n \n \n \n \n \n \n \n\n \n \n \n \n \n \n \n\n \n \n \n \n \n \n \n\n \n \n \n \n \n \n \n\n \n \n \n \n \n \n \n ";
+    assert(!decrypt(p, C2)); // too many newline characters
