@@ -1,0 +1,45 @@
+// Test cases for CS31 Project 5 (in progress)     
+    
+    
+    char a[] = "abccd";  //basic coded
+    char C1[] = "hello";
+    assert(decrypt(a, C1));
+    
+    char b[] = "ab abccd de";  // contained in other letters
+    assert(decrypt(b, C1));
+    
+    char c[] = "abc cd";  //space in middle; false
+    assert(!decrypt(c, C1));
+    
+    char d[] = "abc\ncd";  //newline in middle; false
+    assert(!decrypt(d, C1));
+    
+    char e[] = "babccd"; //doesn't start with space
+    assert(!decrypt(e, C1));
+    
+    char f[] = "babccde"; //doesn't end with space
+    assert(!decrypt(f, C1));
+    
+    char g[] = "$ 7 piggy \n 90"; // miscellaneous characters
+    assert(decrypt(g, C1));
+    
+    char h[] = "pigg gheew"; // false start
+    assert(decrypt(h, C1));
+    
+    //Slightly more complex
+    char C2[] = "hello my friendos";
+    
+    char i[] = "piggy wr oklixqym"; // simply translated
+    assert(decrypt(i, C2));
+    
+    char j[] = "0 piggy )wr 883 oklixqym\n 2"; // extra spaces and punctuation
+    assert(decrypt(j, C2));
+    
+    char k[] = "piggywroklixqym"; // no spaces
+    assert(!decrypt(k, C2));
+    
+    char l[] = "piggy wr \n oklixqym";  // newline splits crib
+    assert(!decrypt(l, C2));
+    
+    char m[] = "piggy wr \n oklixqym";  // newline splits crib
+    assert(!decrypt(m, C2));
