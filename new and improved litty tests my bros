@@ -1,0 +1,83 @@
+  char litty[]={"rm gsv dliow lu sa"};
+    char littyfalse[]={"rm gsv dliow lu ss"};
+    char criblitty[]={"of hz"};
+    char toolong[]={"mnbvnghtyrumnbvnghtyrumnbvnghtyrumnbvnghtyrumnbvnghtyrumnbvnghtyrumnbvnghtyrumnbvnghtyrumnbvnghtyru\nvnghty"};
+    char toomanyzerbyte[]={"\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk\nmk"};
+    char cribtoomanyzerobytes[]="mk";
+    //checks to see if the program would upput true for a simple true example
+    assert(decrypt(litty,criblitty));
+    char criblittyfalse[]={"of hh"};
+    //checks that the program will catch a redefinition of the variable within the tempkey
+    assert(!decrypt(litty,criblittyfalse));
+    //checks that if the same varible is read into the temp key for different variables the program returns false
+    assert(!decrypt(littyfalse,criblitty));
+    //makes sure it returns false if the string is too long between '\n'
+    assert(!decrypt(toolong,criblitty));
+    //makes sure the program returns false if there are too many zero bytes
+    assert(!decrypt(toomanyzerbyte,cribtoomanyzerobytes));
+    char fine[]="aaaaaaaaaa";
+    char fine2[]="aaaaaaaaaa";
+    assert(decrypt(fine,fine2));
+    char redefine[]="aaaaaaaaaa";
+    char redefine2[]="aaaagaaaaa";
+    //checks that if the same varible is read into the temp key for different variables the program returns false
+    //checks that the program will catch a redefinition of the variable within the tempkey
+    assert(!decrypt(redefine,redefine2));
+    assert(!decrypt(redefine2,redefine));
+
+    char empty[]={};
+    //makes sure the function returns false when read in an empty c string for cyphertext or crib
+    assert(!decrypt(empty,redefine));
+    assert(!decrypt(redefine,empty));
+    
+    //makes sure the function can deal with weird punctionation in the crib and the cipher
+    char conorlikes[]="xlmli orpvh xh 31";
+    char conorlikescrib[]="conor ....likes";
+    assert(decrypt(conorlikes,conorlikescrib));
+    char conorlikes2[]="xlmli .;'/.;orpvh xh 31";
+    char conorlikescrib2[]="conor likes";
+    assert(decrypt(conorlikes2,conorlikescrib2));
+    
+    //makes sure that the function ignore found "cribs" in the middle of words
+    char conorlikes3[]="xlmliorpvh xh 31";
+    char conorlikescrib3[]="conor";
+    assert(!decrypt(conorlikes3,conorlikescrib3));
+    
+    //makes sure the function returns false when there is a newline in the crib
+    char conorlikes4[]="xlmli orpvh xh 31";
+    char conorlikescrib4[]="con\nor";
+    assert(!decrypt(conorlikes4,conorlikescrib4));
+
+    //makes sure the program can handle punctuation at the beggining the the crib
+    char conorlikes5[]=";..xlmli.orpvh xh 31";
+    char conorlikescrib5[]="conor";
+    assert(decrypt(conorlikes5,conorlikescrib5));
+    
+    
+    
+    char princess[]="Svool, nb mznv rh Rmrtl Nlmglbz, blf proovw nb uzgsvi, kivkziv gl wrv.";
+    char princesscrib1[]="Hello, my";
+    char princesscrib2[]="my name";
+    char princesscrib3[]="Montoya, you";
+    char princesscrib4[]="to die";
+    char princesscrib5[]="prepare";
+    char princesscrib6[]="is Inigo";
+    assert(decrypt(princess,princesscrib1));
+    assert(decrypt(princess,princesscrib2));
+    assert(decrypt(princess,princesscrib3));
+    assert(decrypt(princess,princesscrib4));
+    assert(decrypt(princess,princesscrib5));
+    assert(decrypt(princess,princesscrib6));
+    
+    char notprincesscrib1[]="ntoya";
+    char notprincesscrib2[]="smallberg";
+    char notprincesscrib3[]="herro mrs";
+    char notprincesscrib4[]="dededede de de de de de bwong";
+    char notprincesscrib5[]="stupidfaced";
+    char notprincesscrib6[]="";
+    assert(!decrypt(princess,notprincesscrib1));
+    assert(!decrypt(princess,notprincesscrib2));
+    assert(!decrypt(princess,notprincesscrib3));
+    assert(!decrypt(princess,notprincesscrib4));
+    assert(!decrypt(princess,notprincesscrib5));
+    assert(!decrypt(princess,notprincesscrib6));
