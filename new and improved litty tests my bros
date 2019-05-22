@@ -74,7 +74,7 @@
     char notprincesscrib3[]="herro mrs";
     char notprincesscrib4[]="dededede de de de de de bwong";
     char notprincesscrib5[]="stupidfaced";
-    char notprincesscrib6[]="";
+    char notprincesscrib6[]="blub";
     assert(!decrypt(princess,notprincesscrib1));
     assert(!decrypt(princess,notprincesscrib2));
     assert(!decrypt(princess,notprincesscrib3));
