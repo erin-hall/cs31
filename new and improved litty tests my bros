@@ -25,10 +25,11 @@
     assert(!decrypt(redefine,redefine2));
     assert(!decrypt(redefine2,redefine));
 
-    char empty[]={};
+    //below test will work in xcode but crash g31
+    //char empty[]={};
     //makes sure the function returns false when read in an empty c string for cyphertext or crib
-    assert(!decrypt(empty,redefine));
-    assert(!decrypt(redefine,empty));
+    //assert(!decrypt(empty,redefine));
+    // assert(!decrypt(redefine,empty));
     
     //makes sure the function can deal with weird punctionation in the crib and the cipher
     char conorlikes[]="xlmli orpvh xh 31";
